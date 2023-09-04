@@ -34,7 +34,7 @@ const articleSchema = new mongoose.Schema({
 
 })
 
-articleSchema.pre('validate', function (next) {
+articleSchema.pre('validate', (next) => {
     if (this.title) {
         this.slug = slugify(this.title, { lower: true, strict: true })
     }
@@ -45,5 +45,6 @@ articleSchema.pre('validate', function (next) {
 
     next()
 })
+
 
 module.exports = mongoose.model('Article', articleSchema);
